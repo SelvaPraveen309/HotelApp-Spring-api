@@ -8,7 +8,7 @@ public class FoodiesGoApiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FoodiesGoApiApplication.class, args);
-		System.out.println("hi");
+		System.out.println("Success");
 	}
 
 }
