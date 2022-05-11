@@ -1,4 +1,4 @@
-package com.app.Hotel.FoodiesGoAPI.model;
+package com.app.hotel.foodiesgoapi.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,20 +11,23 @@ import lombok.Data;
 import lombok.ToString;
 
 @Entity
-@ToString
 @Data
-@Table(name="register")
-public class UserRegistration  {
+@Table(name = "register")
+public class UserRegistration {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(name="name",nullable=false,length= 20)
+	
+	@Column(name = "name", nullable = false, length = 20)
 	private String name;
-	@Column(name="email" ,nullable=false,unique= true, length=30)
+	
+	@Column(name = "email", nullable = false, unique = true, length = 30)
 	private String email;
-	@Column (name="password",nullable=false)
+	
+	@Column(name = "password", nullable = false)
 	private String password;
-	@Column(name="mobile_no",nullable=false)
+	
+	@Column(name = "mobile_no", nullable = false)
 	private String number;
 
 }

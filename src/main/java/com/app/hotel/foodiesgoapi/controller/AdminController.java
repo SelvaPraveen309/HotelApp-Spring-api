@@ -1,12 +1,11 @@
-package com.app.Hotel.FoodiesGoAPI.controller;
-
+package com.app.hotel.foodiesgoapi.controller;
+ 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.Hotel.FoodiesGoAPI.dao.AdminRepository;
-import com.app.Hotel.FoodiesGoAPI.model.UserRegistration;
+import com.app.hotel.foodiesgoapi.dao.AdminRepository;
 
 @RestController
 public class AdminController {

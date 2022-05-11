@@ -1,4 +1,4 @@
-package com.app.Hotel.FoodiesGoAPI.controller;
+package com.app.hotel.foodiesgoapi.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.Hotel.FoodiesGoAPI.dao.MenuListRepository;
-import com.app.Hotel.FoodiesGoAPI.model.Menus;
+import com.app.hotel.foodiesgoapi.dao.MenuListRepository;
+import com.app.hotel.foodiesgoapi.model.Menus;
+
 
 @RestController
 public class MenusController {
 	@Autowired
-
-	MenuListRepository menuRepository;
+    MenuListRepository menuRepository;
 
 	@PostMapping("MenuInsert/save")
 
@@ -31,7 +31,6 @@ public class MenusController {
 	} 
 
 	@GetMapping("MenuList/list")
-
 	public List<Menus> findAll() {
 
 		List<Menus> list = menuRepository.findAll();
@@ -78,13 +77,38 @@ public class MenusController {
 		System.out.println("foodName");
 		return menuName;
 	}
-	@GetMapping("DishesByLetter/search")
+	@GetMapping("DishesByLetter/food_name")
 	public List<Menus>dishesByLetter(@RequestParam("food_name")String foodName){
 		List<Menus>menus=menuRepository.findAll();
 		List<Menus>filteredMenus=menus.stream().filter(food ->food.getFoodName().toLowerCase().contains(foodName.toLowerCase())).collect(Collectors.toList());
 		System.out.println(filteredMenus);
 		return  filteredMenus;
-		
+	 }
+	@GetMapping("SortBetweenprice/price1") // find by less than price
+	public List<Menus> sortBetweenprice1() {
+		List<Menus> prices1 = menuRepository.sortBetweenprice1();
+		return prices1;
+}
+	@GetMapping("SortBetweenprice/price2") // find by less than price
+	public List<Menus> sortBetweenprice2() {
+		List<Menus> prices2 = menuRepository.sortBetweenprice2();
+		return prices2;
+}
+	@GetMapping("SortBetweenprice/price") // find by less than price given by user
+	public List<Menus> sortBetweenprice3(@RequestParam("min")int min,@RequestParam("max") int max ) {
+		List<Menus> prices3 = menuRepository.sortBetweenprice3(min,max);
+		return prices3;
+}
+	@GetMapping("findBycategory/{food_type}") 
+	public List<Menus> findByCategory(@PathVariable("food_type") String foodType) {
+		List<Menus> menuCategory = menuRepository.findByCategory(foodType);
+		return menuCategory ;
 	}
-
+	
+	@GetMapping("findByStyle/{style_of_items}") 
+	public List<Menus> findByStyle(@PathVariable("style_of_items") String foodStyle) {
+		List<Menus> menuStyle= menuRepository.findByStyle(foodStyle);
+		return menuStyle ;
+	
+}
 }

@@ -1,4 +1,4 @@
-package com.app.Hotel.FoodiesGoAPI.model;
+package com.app.hotel.foodiesgoapi.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,16 +26,15 @@ public class Menus {
 	
 	@Column(name = "food_name", nullable = false, unique = true, length = 50)
 	private String foodName;
+	
 	@Column(name = "price", nullable = false)
 	private int price;
-	@JsonIgnore
-	@Column(name = "starting_time")
-	private String startingTime;
-	@JsonIgnore
-	@Column(name = "ending_time")
-	private String endingTime;
+
 	@Column(name = "food_type")
 	private String foodType;
+	
 	@Column(name = "style_of_items")
 	private String foodStyle;
+	@Column(name="food_images")
+	private String foodImages;
 }
